@@ -55,7 +55,7 @@ echo $args['before_title'] . $instance['title'] . $args['after_title']; ?>
             <refresh class="playerslist">
                 <?php foreach ($server['players'] as $player) : ?>
                     <?php if (isset($instance['show_players_avatar']) && $instance['show_players_avatar']) : ?>
-                        <?php echo '　<img src="https://cravatar.eu/avatar/' . $player . '/' . $instance['avatar_size'] . '.png"> ' . $player; ?>
+                        <?php echo '　<img style="vertical-align: middle;" src="https://cravatar.eu/avatar/' . $player . '/' . $instance['avatar_size'] . '.png"> ' . $player; ?>
                     <?php else : ?>
                         <?php echo '<span>　- ' . $player . '</span><br>'; ?>
                     <?php endif; ?>
