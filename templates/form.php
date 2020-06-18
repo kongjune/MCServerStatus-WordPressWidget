@@ -9,23 +9,6 @@
         <td colspan="2"><hr class="minestatus"></td>
     </tr>
 	<tr>
-		<td>
-			<?php echo esc_html__('This method use GameSpy4 protocol, and requires enabling query listener in your server.properties like this:', 'server-status-for-minecraft-pc-pe'); ?><br>
-			- <font color="#ff0000">enable-query=true</font><br>
-			- <font color="#ff0000">query.port=25565</font><br><br>
-            <?php echo sprintf(esc_html__("Enabled query listener, can't get server data, it may be that your website hosting provider doesn't allow requests, you can try setting query port to 25565 (%s) in %s file and then testing it.", "server-status-for-minecraft-pc-pe"), '<font color="#ff0000">query.port=25565</font>', '<font color="#ff0000">server.properties</font>'); ?><br><br>
-            <?php echo esc_html__("If you still can't, please contact your website hosting provider.", "server-status-for-minecraft-pc-pe"); ?>
-		</td>
-	</tr>
-    <tr>
-        <td colspan="2"><hr class="minestatus"></td>
-    </tr>
-    <tr>
-		<td>
-            <?php echo esc_html__("If query listener cannot be used, it automatically switches to ping.", "server-status-for-minecraft-pc-pe"); ?>
-		</td>
-	</tr>
-	<tr>
         <td colspan="2"><hr class="minestatus"></td>
     </tr>
 	<tr>
@@ -56,12 +39,6 @@
         <td width="20%"><?php echo esc_html__('Server Port', 'server-status-for-minecraft-pc-pe'); ?></td>
         <td>
             <input class="widefat" id="minestatus_port" name="<?php echo $this->get_field_name('server_port'); ?>" type="text" value="<?php echo $instance['server_port']; ?>">
-        </td>
-    </tr>
-    <tr>
-        <td width="20%"><?php echo esc_html__('Query Port', 'server-status-for-minecraft-pc-pe'); ?></td>
-        <td>
-            <input class="widefat" id="minestatus_query_port" name="<?php echo $this->get_field_name('query_port'); ?>" type="text" value="<?php echo $instance['query_port']; ?>">
         </td>
     </tr>
 	<tr>
@@ -122,12 +99,6 @@
         </td>
     </tr>
 	<tr>
-        <td><?php echo esc_html__('Show server platform', 'server-status-for-minecraft-pc-pe'); ?></td>
-        <td style="text-align:right;">
-            <input id="minestatus_show_server_software" name="<?php echo $this->get_field_name('show_server_platform'); ?>" type="checkbox" value="on" <?php echo ($instance['show_server_platform'] == 'on') ? 'checked="checked"' : ''; ?>>
-        </td>
-    </tr>
-	<tr>
         <td><?php echo esc_html__('Show server software', 'server-status-for-minecraft-pc-pe'); ?></td>
         <td style="text-align:right;">
             <input id="minestatus_show_server_software" name="<?php echo $this->get_field_name('show_server_software'); ?>" type="checkbox" value="on" <?php echo ($instance['show_server_software'] == 'on') ? 'checked="checked"' : ''; ?>>
@@ -137,12 +108,6 @@
         <td><?php echo esc_html__('Show game version', 'server-status-for-minecraft-pc-pe'); ?></td>
         <td style="text-align:right;">
             <input id="minestatus_show_game_version" name="<?php echo $this->get_field_name('show_game_version'); ?>" type="checkbox" value="on" <?php echo ($instance['show_game_version'] == 'on') ? 'checked="checked"' : ''; ?>>
-        </td>
-    </tr>
-    <tr>
-        <td><?php echo esc_html__('Show plugins', 'server-status-for-minecraft-pc-pe'); ?></td>
-        <td style="text-align:right;">
-            <input id="minestatus_show_plugins" name="<?php echo $this->get_field_name('show_plugins'); ?>" type="checkbox" value="on" <?php echo ($instance['show_plugins'] == 'on') ? 'checked="checked"' : ''; ?>>
         </td>
     </tr>
     <tr>

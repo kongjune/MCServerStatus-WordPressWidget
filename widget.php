@@ -65,8 +65,7 @@ class MCServerStatus_Widget extends Widgetize {
             $instance['host'] = $_SERVER['SERVER_ADDR'];
         }
 
-        $client = new GoneTone\ApiClient($instance['host'], $instance['server_port'], $instance['query_port']);
-        $queryServer = $client->queryCall();
+        $client = new GoneTone\ApiClient($instance['host'], $instance['server_port']);
         $pingServer = $client->pingCall();
 
         require dirname(__FILE__) . '/templates/widget.php';

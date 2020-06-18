@@ -21,15 +21,6 @@ echo $args['before_title'] . $instance['title'] . $args['after_title']; ?>
         <?php echo esc_html__('Host: ', 'server-status-for-minecraft-pc-pe'); ?><strong><font color="#008000"><?php echo $server['server']['host']; ?></font><?php if (isset($instance['show_port']) && $instance['show_port'] == 'on'): ?><?php echo ':<font color="#ff0000">' . $server['server']['port'] . '</font>'; ?><?php endif; ?></strong>
     <?php endif; ?>
 
-	<?php if (isset($instance['show_server_platform']) && $instance['show_server_platform']) : ?>
-        <br>
-        <?php if ($server['server']['server_platform'] != "ping") : ?>
-            <?php echo esc_html__('Server platform: ', 'server-status-for-minecraft-pc-pe'); ?><strong><font color="#008000"><?php echo $server['server']['server_platform']; ?></font></strong>
-        <?php else : ?>
-            <?php echo esc_html__('Server platform: ', 'server-status-for-minecraft-pc-pe'); ?><strong><font color="#ff0000"><?php echo esc_html__('Ping request cannot get data.', 'server-status-for-minecraft-pc-pe'); ?></font></strong>
-        <?php endif; ?>
-    <?php endif; ?>
-
     <?php if (isset($instance['show_server_software']) && $instance['show_server_software']) : ?>
         <br>
         <?php echo esc_html__('Server software: ', 'server-status-for-minecraft-pc-pe'); ?><strong><font color="#008000"><?php echo $server['server']['version']['software']; ?></font></strong>
@@ -50,27 +41,6 @@ echo $args['before_title'] . $instance['title'] . $args['after_title']; ?>
         <a href="<?php echo $instance['dynmap']; ?>" target="_blank"><?php echo esc_html__('DynMap', 'server-status-for-minecraft-pc-pe'); ?></a>
     <?php endif; ?>
 
-    <?php if (isset($instance['show_plugins']) && $instance['show_plugins']) : ?>
-        <br>
-        <?php if (count($server['plugins']) > 0 || $server['plugins'] == "ping") : ?>
-            <?php echo esc_html__('Plugins: ', 'server-status-for-minecraft-pc-pe'); ?><strong><?php echo count($server['plugins']); ?></strong> (<a href="javascript:toggleMcsList(<?php echo $randomPlugins; ?>);"><?php echo esc_html__('Plugins list', 'server-status-for-minecraft-pc-pe'); ?></a>)
-        <?php else : ?>
-            <?php echo esc_html__('Plugins: ', 'server-status-for-minecraft-pc-pe'); ?><strong><?php echo esc_html__('Not found.', 'server-status-for-minecraft-pc-pe'); ?></strong>
-        <?php endif; ?>
-    <?php endif; ?>
-
-    <?php if (count($server['plugins']) > 0 && $server['plugins'] != "ping" && isset($instance['show_plugins']) && $instance['show_plugins']) : ?>
-        <span id="mcs_list_<?php echo $randomPlugins; ?>" style="display:none">
-            <?php foreach ($server['plugins'] as $plugin) : ?>
-                <span>　- <?php echo $plugin['name']; ?></span><br>
-            <?php endforeach; ?>
-        </span>
-    <?php elseif ($server['plugins'] == "ping" && isset($instance['show_plugins']) && $instance['show_plugins']) : ?>
-        <span id="mcs_list_<?php echo $randomPlugins; ?>" style="display:none">
-            <span>　- <font color="#ff0000"><?php echo esc_html__('Ping request cannot get data.', 'server-status-for-minecraft-pc-pe'); ?></font></span>
-        </span>
-    <?php endif; ?>
-
     <?php if (isset($instance['show_players']) && $instance['show_players']) : ?>
         <br>
         <?php if (count($server['players']) > 0 || $server['players'] == "ping") : ?>
@@ -80,25 +50,17 @@ echo $args['before_title'] . $instance['title'] . $args['after_title']; ?>
         <?php endif; ?>
     <?php endif; ?>
 
-    <?php if (count($server['players']) > 0 && $server['players'] != "ping" && isset($instance['show_players']) && $instance['show_players']) : ?>
+    <?php if (count($server['players']) > 0 && isset($instance['show_players']) && $instance['show_players']) : ?>
         <span id="mcs_list_<?php echo $randomPlayerList; ?>" style="margin-top:5px;<?php echo (isset($instance['show_auto_players']) && $instance['show_auto_players'] == 'on') ? 'display:block' : 'display:none'; ?> ">
             <refresh class="playerslist">
                 <?php foreach ($server['players'] as $player) : ?>
                     <?php if (isset($instance['show_players_avatar']) && $instance['show_players_avatar']) : ?>
-                        <?php if ($server['server']['server_platform'] == 'Minecraft: Java Edition') : ?>
-                            <?php echo '　<img src="https://cravatar.eu/helmhead/' . $player['name'] . '/' . $instance['avatar_size'] . '.png"> ' . $player['name']; ?>
-                        <?php else : ?>
-                            <?php echo '　<img src="https://cravatar.eu/helmhead/steve/' . $instance['avatar_size'] . '.png"> ' . $player['name']; ?>
-                        <?php endif; ?>
+                        <?php echo '　<img src="https://cravatar.eu/avatar/' . $player . '/' . $instance['avatar_size'] . '.png"> ' . $player; ?>
                     <?php else : ?>
-                        <?php echo '<span>　- ' . $player['name'] . '</span><br>'; ?>
+                        <?php echo '<span>　- ' . $player . '</span><br>'; ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </refresh>
-        </span>
-    <?php elseif ($server['players'] == "ping" && isset($instance['show_players']) && $instance['show_players']) : ?>
-        <span id="mcs_list_<?php echo $randomPlayerList; ?>" style="margin-top:5px;<?php echo (isset($instance['show_auto_players']) && $instance['show_auto_players'] == 'on') ? 'display:block' : 'display:none'; ?> ">
-            <span>　- <font color="#ff0000"><?php echo esc_html__('Ping request cannot get data.', 'server-status-for-minecraft-pc-pe'); ?></font></span>
         </span>
     <?php endif; ?>
 
